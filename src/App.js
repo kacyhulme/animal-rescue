@@ -32,7 +32,7 @@ var AnimalGallery = React.createClass ({
     return (
       <div className="animal-gallery">
       <h3>Our babies</h3>
-        <div>
+      <div className="animal-list-wrapper">
         <ul>
           { animals.map(animal => 
             <li>
@@ -41,7 +41,7 @@ var AnimalGallery = React.createClass ({
             </li> )}
         </ul>
       </div>
-      <div>{ this.state.showAnimalDetails ? <AnimalDetails /> : null }</div>
+      <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails /> : null }</div>
       </div>
       );
   }
@@ -51,11 +51,11 @@ class AnimalDetails extends Component {
   render() {
     return (
       <div id="animaldetails" className="animal-details">
-      Animal Details: 
-      Weight:
-      Age:
-      City of Birth:
-      Monthly Feeding Costs:
+        <p>Animal Details: </p>
+        <p>Weight:</p>
+        <p>Age:</p>
+        <p>City of Birth:</p>
+        <p>Monthly Feeding Costs:</p>
       </div>
       );
   }
