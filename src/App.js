@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './bird-basic-draw.svg';
+import animalpic from './cow-pic.jpg';
 import './App.css';
 
 class App extends Component {
@@ -26,7 +27,10 @@ class AnimalGallery extends Component {
       <div className="animal-gallery">
         <h3>Our babies</h3>
         <ul>
-        { animals.map( animal => <li> {animal} </li> )}
+        { animals.map( animal => <li> 
+          <div><button type="button">{animal}</button></div>
+        <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
+        </li> )}
         </ul>
       </div>
     );
