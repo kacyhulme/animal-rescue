@@ -28,7 +28,6 @@ var AnimalGallery = React.createClass ({
   handleClick: function(id) {
     this.setState({ showAnimalDetails: true});
     this.setState({num : id});
-    
   },
   render() {
     const animals = [{id: 1, name:"Sammy", weight: "600lbs", age: 14, city: "Montgomery", cost: 460}, {id: 2, name:"Sal", weight: "900lbs", age: 2, city: "Waxville", cost: 600}, {id: 3, name:"Hank", weight: "800lbs", age: 13, city: "Willmington", cost: 350}, {id: 4, name:"Topanga", weight: "650lbs", age: 8, city: "Thomasville", cost: 450}, {id: 5, name:"Ralph", weight: "700lbs", age: 6, city: "Killington", cost: 500}];
@@ -40,7 +39,7 @@ var AnimalGallery = React.createClass ({
         <ul>
           { animals.map(animal => 
             <li key={animal.id}>
-              <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}{animal.id}</button></div>
+              <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}</button></div>
               <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
             </li> )}
         </ul>
