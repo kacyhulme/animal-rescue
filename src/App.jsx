@@ -28,7 +28,6 @@ var AnimalGallery = React.createClass ({
   handleClick: function(id) {
     this.setState({ showAnimalDetails: true});
     this.setState({num : id});
-    //console.log(id);
   },
   _getAnimals: function() {
     const animals=[{id: 1, name:"Sammy", weight: "600lbs", age: 14, city: "Montgomery", cost: 460}, {id: 2, name:"Sal", weight: "900lbs", age: 2, city: "Waxville", cost: 600}, {id: 3, name:"Hank", weight: "800lbs", age: 13, city: "Willmington", cost: 350}, {id: 4, name:"Topanga", weight: "650lbs", age: 8, city: "Thomasville", cost: 450}, {id: 5, name:"Ralph", weight: "700lbs", age: 6, city: "Killington", cost: 500}];
@@ -44,7 +43,7 @@ var AnimalGallery = React.createClass ({
             </li> )}
           </ul>
         </div>
-        <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails animal={ animals[3] } /> : null }</div>
+        <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails animal={ animals[this.state.num] } /> : null }</div>
       </div>
       )
   },
@@ -64,7 +63,7 @@ var AnimalGallery = React.createClass ({
 
 class AnimalDetails extends Component {
   render() {
-    console.log(this.props.animal)
+    //console.log(this.props.animal)
     return (
       <div id="animaldetails" className="animal-details">
       <p>Animal Details</p>
