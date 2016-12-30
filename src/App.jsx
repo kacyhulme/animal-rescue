@@ -30,7 +30,7 @@ var AnimalGallery = React.createClass ({
     this.setState({num : id});
   },
   _getAnimals: function() {
-    const animals=[{id: 1, name:"Sammy", weight: "600lbs", age: 14, city: "Montgomery", cost: 460}, {id: 2, name:"Sal", weight: "900lbs", age: 2, city: "Waxville", cost: 600}, {id: 3, name:"Hank", weight: "800lbs", age: 13, city: "Willmington", cost: 350}, {id: 4, name:"Topanga", weight: "650lbs", age: 8, city: "Thomasville", cost: 450}, {id: 5, name:"Ralph", weight: "700lbs", age: 6, city: "Killington", cost: 500}];
+    const animals=[{id: 0, name:"Sammy", weight: "600lbs", age: 14, city: "Montgomery", cost: 460}, {id: 1, name:"Sal", weight: "900lbs", age: 2, city: "Waxville", cost: 600}, {id: 2, name:"Hank", weight: "800lbs", age: 13, city: "Willmington", cost: 350}, {id: 3, name:"Topanga", weight: "650lbs", age: 8, city: "Thomasville", cost: 450}, {id: 4, name:"Ralph", weight: "700lbs", age: 6, city: "Killington", cost: 500}];
     
     return( 
       <div className="animal-gallery" >
@@ -38,7 +38,7 @@ var AnimalGallery = React.createClass ({
           <ul>
           { animals.map(animal => 
             <li>
-            <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}{animal.id}</button></div>
+            <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}</button></div>
             <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
             </li> )}
           </ul>
@@ -67,6 +67,7 @@ class AnimalDetails extends Component {
     return (
       <div id="animaldetails" className="animal-details">
       <p>Animal Details</p>
+      <p>Name: {this.props.animal.name}</p>
       <p>Weight: {this.props.animal.weight}</p>
       <p>Age: {this.props.animal.age}</p>
       <p>City of Birth: {this.props.animal.city}</p>
