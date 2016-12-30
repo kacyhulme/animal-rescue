@@ -37,7 +37,7 @@ var AnimalGallery = React.createClass ({
         <div className="animal-list-wrapper">
           <ul>
           { animals.map(animal => 
-            <li>
+            <li key={animal.id}>
             <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}</button></div>
             <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
             </li> )}
