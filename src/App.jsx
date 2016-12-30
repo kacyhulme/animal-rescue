@@ -25,7 +25,7 @@ var AnimalGallery = React.createClass ({
     return { showAnimalDetails: false};
 
   },
-  handleClick: function(id) {
+  _handleClick: function(id) {
     this.setState({ showAnimalDetails: true});
     this.setState({num : id});
   },
@@ -38,7 +38,7 @@ var AnimalGallery = React.createClass ({
           <ul>
           { animals.map(animal => 
             <li key={animal.id}>
-            <div><button onClick={() => this.handleClick(animal.id)} type="button">{animal.name}</button></div>
+            <div><button onClick={() => this._handleClick(animal.id)} type="button">{animal.name}</button></div>
             <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
             </li> )}
           </ul>
