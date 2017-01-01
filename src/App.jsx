@@ -72,8 +72,50 @@ class AnimalDetails extends Component {
       <p>Age: {this.props.animal.age}</p>
       <p>City of Birth: {this.props.animal.city}</p>
       <p>Monthly Feeding Costs: {this.props.animal.cost}</p>
+      <CommentForm />
       </div>
       );
   }
 };
+
+class CommentForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {name: '', comment: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    // this.setState({[event.target.name]: event.target.value});
+    // console.log(event.target.value)
+    if(event.target.name === "name") {
+      this.setState({name: event.target.value});
+    } else {
+      this.setState({comment: event.target.value});
+    }
+  }
+
+  handleSubmit(event) {
+    alert('Thank you, ' + this.state.name + ' for submitting the following comment ' + this.state.comment );
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+        </label>
+        <label>
+          Comment:
+          <input name="comment" type="text" value={this.state.comment} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
 export default App;
