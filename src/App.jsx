@@ -34,16 +34,16 @@ var AnimalGallery = React.createClass ({
     
     return( 
       <div className="animal-gallery" >
-        <div className="animal-list-wrapper">
-          <ul>
-          { animals.map(animal => 
-            <li key={animal.id}>
-            <div><button onClick={() => this._handleClick(animal.id)} type="button">{animal.name}</button></div>
-            <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
-            </li> )}
-          </ul>
-        </div>
-        <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails animal={ animals[this.state.num] } /> : null }</div>
+      <div className="animal-list-wrapper">
+      <ul>
+      { animals.map(animal => 
+        <li key={animal.id}>
+        <div><button onClick={() => this._handleClick(animal.id)} type="button">{animal.name}</button></div>
+        <div><img src={animalpic} className="animal-pic" alt="logo" /></div>
+        </li> )}
+      </ul>
+      </div>
+      <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails animal={ animals[this.state.num] } /> : null }</div>
       </div>
       )
   },
@@ -72,50 +72,84 @@ class AnimalDetails extends Component {
       <p>Age: {this.props.animal.age}</p>
       <p>City of Birth: {this.props.animal.city}</p>
       <p>Monthly Feeding Costs: {this.props.animal.cost}</p>
-      <CommentForm />
+      <CommentBox />
       </div>
       );
   }
 };
 
+class CommentBox extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showComments: false,
+      comments: [{id: 1, author: 'Greta', body: 'Ok, thanks.'}]
+    };
+  }
+  render() {
+    return (
+      <div><CommentForm addComment={this._addComment.bind(this)} />
+      <div>{this._getComments()}</div>
+      </div>
+      )
+  }
+  _addComment(author,body) {
+    const comment = {
+      id: this.state.comments.length + 1,
+      author,
+      body
+    };
+    this.setState({ comments: this.state.comments.concat([comment]) });
+  }
+  _getComments() {
+    return this.state.comments.map((comment) => {
+      return (
+        <Comment 
+        author={comment.author}
+        body={comment.body}
+        key={comment.id}
+        />
+        );
+    });
+  }
+}
+
+class Comment extends React.Component {
+  render(){
+    return (
+      <div>
+      <div>{this.props.author}</div>
+      <div>{this.props.body}</div>
+      </div>
+      )
+  }
+}
+
 class CommentForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {name: '', comment: ''};
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    // this.setState({[event.target.name]: event.target.value});
-    // console.log(event.target.value)
-    if(event.target.name === "name") {
-      this.setState({name: event.target.value});
-    } else {
-      this.setState({comment: event.target.value});
-    }
-  }
-
-  handleSubmit(event) {
-    alert('Thank you, ' + this.state.name + ' for submitting the following comment ' + this.state.comment );
-    event.preventDefault();
-  }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
-        </label>
-        <label>
-          Comment:
-          <input name="comment" type="text" value={this.state.comment} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
+      <form onSubmit={this._handleSubmit.bind(this)}>
+      <label>
+      Name:
+      <input placeholder="Name:" ref={(input) => this._author = input} />
+      </label>
+      <label>
+      Comment:
+      <textarea placeholder="Comment:" ref={(textarea) => this._body = textarea} />
+      </label>
+      <input type="submit" value="Submit" />
       </form>
-    );
+      );
+  }
+
+  _handleSubmit(event) {
+    event.preventDefault();
+
+    let author = this._author;
+    let body = this._body;
+    this.props.addComment(author.value, body.value); //addComment passed down from parent 
   }
 }
 export default App;
