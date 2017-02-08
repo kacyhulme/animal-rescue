@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './bird-basic-draw.svg';
 import animalpic from './cow-pic.jpg';
 import './App.css';
+import FetchAnimalData from './GetData.jsx';
 
 class App extends Component {
   render() {
@@ -38,6 +39,12 @@ class AnimalGallery extends Component {
     
     return( 
       <div className="animal-gallery" >
+
+
+      <div className="practice-github-data">
+        <FetchAnimalData />
+      </div>
+
       <div className="animal-list-wrapper">
       <ul>
       { animals.map(animal => 
