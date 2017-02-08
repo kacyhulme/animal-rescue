@@ -20,16 +20,20 @@ class App extends Component {
   }
 }
 
-var AnimalGallery = React.createClass ({
-  getInitialState: function() {
-    return { showAnimalDetails: false};
+class AnimalGallery extends Component {
+  constructor() {
+    super();
 
-  },
-  _handleClick: function(id) {
+    this.state = {
+      showAnimalDetails: false
+    };
+  }
+
+  _handleClick(id) {
     this.setState({ showAnimalDetails: true});
     this.setState({num : id});
-  },
-  _getAnimals: function() {
+  }
+  _getAnimals() {
     const animals=[{id: 0, name:"Sammy", weight: "600lbs", age: 14, city: "Montgomery", cost: 460}, {id: 1, name:"Sal", weight: "900lbs", age: 2, city: "Waxville", cost: 600}, {id: 2, name:"Hank", weight: "800lbs", age: 13, city: "Willmington", cost: 350}, {id: 3, name:"Topanga", weight: "650lbs", age: 8, city: "Thomasville", cost: 450}, {id: 4, name:"Ralph", weight: "700lbs", age: 6, city: "Killington", cost: 500}];
     
     return( 
@@ -46,7 +50,7 @@ var AnimalGallery = React.createClass ({
       <div className="animal-details-wrapper">{ this.state.showAnimalDetails ? <AnimalDetails animal={ animals[this.state.num] } /> : null }</div>
       </div>
       )
-  },
+  }
   render() {
     const animals= this._getAnimals();
     
@@ -59,7 +63,7 @@ var AnimalGallery = React.createClass ({
       </div>
       );
   }
-});
+};
 
 class AnimalDetails extends Component {
   render() {
