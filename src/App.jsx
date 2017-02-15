@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './bird-basic-draw.svg';
 import animalpic from './cow-pic.jpg';
 import './App.css';
-import FetchAnimalData from './TryGetData.jsx';
+import FetchAnimalData from './GetDataAxiosGithub.jsx';
 import CommentBox from './Comment.jsx';
 
 class App extends Component {
@@ -43,7 +43,14 @@ class AnimalGallery extends Component {
 
 
       <div className="practice-github-data">
-        <FetchAnimalData subreddit="reactjs"/>
+        
+
+
+        <FetchAnimalData />
+
+
+
+
       </div>
 
       <div className="animal-list-wrapper">

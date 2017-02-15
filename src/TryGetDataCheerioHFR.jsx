@@ -14,7 +14,7 @@ class FetchAnimalData extends Component {
     };
   }
   componentDidMount() {
-    axios.get(`http://www.imdb.com/title/tt1229340/`)
+    axios.get(`https://healthyforreal.com/`)
     .then(res => {
       let $ = cheerio.load(res);
       this.setState({
