@@ -3,6 +3,7 @@ import logo from './bird-basic-draw.svg';
 import animalpic from './cow-pic.jpg';
 import './App.css';
 import CommentBox from './Comment.jsx';
+import Navigation from './Navigation.jsx';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
       <p className="App-intro">
       Welcome! We have so many animals who need your help!
       </p>
+      <Navigation></Navigation>
       <AnimalGallery></AnimalGallery>
       </div>
       );
