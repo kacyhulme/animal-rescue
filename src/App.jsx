@@ -4,6 +4,9 @@ import animalpic from './cow-pic.jpg';
 import './App.css';
 import CommentBox from './Comment.jsx';
 import Navigation from './Navigation.jsx';
+import Staff from './Staff.jsx';
+import About from './About.jsx';
+import Store from './Store.jsx';
 
 class App extends Component {
   render() {
