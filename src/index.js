@@ -1,9 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './App';
+import { render } from 'react-dom'
 import './index.css';
+import Calendar from './modules/Calendar'
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+import { Router, Route, hashHistory } from 'react-router'
+
+// used this prior to adding routes
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('root')
+// );
+
+render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App}/>
+    {/* add the routes here */}
+    <Route path="/calendar" component={Calendar}/>
+    
+  </Router>
+), document.getElementById('root'))
