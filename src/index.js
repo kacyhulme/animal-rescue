@@ -7,7 +7,7 @@ import About from './About'
 import Staff from './Staff'
 import Store from './Store'
 
-import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, hashHistory } from 'react-router'
 
 // used this prior to adding routes
 // ReactDOM.render(

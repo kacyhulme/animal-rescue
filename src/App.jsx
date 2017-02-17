@@ -5,9 +5,9 @@ import './App.css';
 import FetchAnimalData from './GetData.jsx';
 import CommentBox from './Comment.jsx';
 import Navigation from './Navigation.jsx';
-import Staff from './Staff.jsx';
-import About from './About.jsx';
-import Store from './Store.jsx';
+// import Staff from './Staff.jsx';
+// import About from './About.jsx';
+// import Store from './Store.jsx';
 
 class App extends Component {
   render() {
