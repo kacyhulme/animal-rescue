@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import fetchJsonp from 'fetch-jsonp';
 
 // const urlForUsername = username => 
 // 'https://api.github.com/users/kacyhulme'
@@ -12,10 +12,11 @@ class FetchAnimalData extends Component {
     };
   }
   componentDidMount() {
-    fetchJsonp('http://api.petfinder.com/pet.getRandom?key=188e82af8c0e73cb8c812bc704fed454&type=dog&location=78703&output=full&format=json')
+    fetch(`http://www.reddit.com/r/${this.props.subreddit}.json`)
       .then(res => {
-        const posts = res.data.data.children.map(obj => obj.data);
-        this.setState({ posts });
+        return res.json();
+      }).then(function(j) {
+        console.log(j);
       });
   }
 
