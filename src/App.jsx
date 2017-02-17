@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './bird-basic-draw.svg';
 import animalpic from './cow-pic.jpg';
 import './App.css';
+import FetchAnimalData from './GetData.jsx';
 import CommentBox from './Comment.jsx';
 import Navigation from './Navigation.jsx';
 import Staff from './Staff.jsx';
@@ -46,6 +47,8 @@ class AnimalGallery extends Component {
       <div className="animal-gallery" >
 
       <div className="practice-github-data">
+<FetchAnimalData subreddit="reactjs" />
+
       </div>
 
       <div className="animal-list-wrapper">
