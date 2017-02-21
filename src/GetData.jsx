@@ -17,16 +17,7 @@ class FetchAnimalData extends Component {
     this.setState({
       dogs: jsondata,
     });
-    //this works, 
-    console.log(jsondata)
-
-
-    const d = jsondata;
-    Object.keys(d).map(function(key) {
-      console.log(<option key={key} value={key}>{d[key]}</option>)
-    });
-
-
+    //this works, console.log(jsondata)
     return jsondata
   }
 
@@ -49,7 +40,7 @@ class FetchAnimalData extends Component {
   render() {
     return (
       <div>
-      <DisplayAnimalData thedata={this.state.jsondata} />
+      <DisplayAnimalData thedata={this.state.dogs} />
       </div>
       );
   }
@@ -60,8 +51,9 @@ class DisplayAnimalData extends Component {
 
   render() {
     //this is working
-    const d = {1: 'Joe', 2: 'Jane'};
-    //but i need the dog data from the FetchData component, like const d = { thedata }
+    //const d = {1: 'Joe', 2: 'Jane'};
+    //but i need the dog data from the FetchData component, like
+    const d = { thedata }
     var dogdata = Object.keys(d).map(function(key) {
       return <option key={key} value={key}>{d[key]}</option>
     });
