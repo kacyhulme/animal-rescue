@@ -8,34 +8,48 @@ class FetchAnimalData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dogs: []
+      dogs: [],
+      someword: "someword"
     };
+  }
+
+  _setTheData(jsondata) {
+    this.setState({
+      dogs: jsondata,
+    });
+    //this works, 
+    console.log(jsondata)
+
+
+    const d = jsondata;
+    Object.keys(d).map(function(key) {
+      console.log(<option key={key} value={key}>{d[key]}</option>)
+    });
+
+
+    return jsondata
   }
 
   _getTheData(){
     fetchJsonp('http://api.petfinder.com/pet.getRandom?key=188e82af8c0e73cb8c812bc704fed454&type=dog&location=78703&output=full&format=json')
     .then(res => {
-      this._setTheData(res);
       return res.json();
+    }).then(json => {
+      //this works, console.log(json.petfinder.pet)
+      this._setTheData(json.petfinder.pet);
     })
-  }
-
-  _setTheData(d) {
-    this.setState({
-      dogs: d
-    });
   }
 
 
   componentDidMount() {
     this._getTheData();
+    //this works, console.log(this)
   }
 
   render() {
     return (
       <div>
-      <div> Fetch Animal Data Component </div>
-      <DisplayAnimalData data={this.state.dogs} />
+      <DisplayAnimalData thedata={this.state.jsondata} />
       </div>
       );
   }
@@ -43,10 +57,18 @@ class FetchAnimalData extends Component {
 
 
 class DisplayAnimalData extends Component {
+
   render() {
+    //this is working
+    const d = {1: 'Joe', 2: 'Jane'};
+    //but i need the dog data from the FetchData component, like const d = { thedata }
+    var dogdata = Object.keys(d).map(function(key) {
+      return <option key={key} value={key}>{d[key]}</option>
+    });
+
     return (
       <div>
-      <div> Display Animal Data Component</div>
+      <div> {dogdata} </div>
       </div>
       )
   }

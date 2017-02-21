@@ -47,7 +47,7 @@ class AnimalGallery extends Component {
       <div className="animal-gallery" >
 
       <div className="practice-github-data">
-<FetchAnimalData subreddit="reactjs" />
+<FetchAnimalData />
 
       </div>
 
